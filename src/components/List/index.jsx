@@ -1,12 +1,13 @@
 import React from 'react';
+import cssList from './List.scss';
 
 function List({items}) {
   
   return (
-    <ul className="todo__list">
+    <ul className="list">
       {items.map(item => {
         return (
-          <li className="active">
+          <li className={item.active ? 'active' : ''}>
             <i>{item.icon ? item.icon : <i className={`badge badge--${item.color}`}></i>}</i>
             <span>{item.name}</span>
           </li>
@@ -17,4 +18,4 @@ function List({items}) {
   )
 }
 
-export default List
+export default List;
