@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import List from '../List';
+import Badge from '../Badge';
+
+import closeSvg from '../../assets/img/close.svg';
 
 import './AddListButton.scss';
 
 function AddList({ colors }) {
   const [visiblePopup, setVisiblePopup] = useState(true);
+  const [selectedColor, setSelectedColor] = useState(colors[0].id);
 
   const items3 = [
     {
@@ -30,12 +34,21 @@ function AddList({ colors }) {
       <List items={items3} onClick={() => setVisiblePopup(true)}/>
 
       {visiblePopup && <div className="add-list__popup">
+
+        <img onClick={() => setVisiblePopup(false)} src={closeSvg} alt="close button" className="add-list__popup-close-btn" />
+
         <input className="field" type="text" placeholder="List name"/>
         <div className="add-list__popup-colors">
-          <ul>
-            <li></li>
-            <li></li>
-          </ul>
+          
+          {colors.map(color => {
+              return <Badge 
+                onClick={() => setSelectedColor(color.id)} 
+                key={color.id} 
+                color={color.name}
+                className={selectedColor === color.id && 'active'}
+              />
+          })}
+       
         </div>
         <button className="button">Add</button>
       </div>}

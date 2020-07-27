@@ -22,7 +22,7 @@ function App() {
         </svg>
       ),
       name: 'All Tasks',
-      active: true
+      active: false
     }
   ]
 
