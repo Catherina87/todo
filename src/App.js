@@ -1,5 +1,8 @@
 import React from 'react';
-import List from './components/List/index'
+import List from './components/List/index';
+import AddList from './components/AddList';
+
+import DB from './assets/db.json';
 
 function App() {
   const items = [
@@ -26,7 +29,8 @@ function App() {
   const items2 = [
     {
       color: 'green',
-      name: 'Purchases'
+      name: 'Purchases',
+      active: true
     },
     {
       color: 'blue',
@@ -42,7 +46,8 @@ function App() {
     <div className="todo">
       <div className="todo__sidebar">
         <List items={items}/>
-        <List items={items2}/>
+        <List items={items2} isRemovable/>
+        <AddList colors={DB.colors}/>
       </div>
       <div className="todo__tasks"></div>
     </div>
